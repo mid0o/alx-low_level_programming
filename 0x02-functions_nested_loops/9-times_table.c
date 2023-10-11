@@ -20,10 +20,8 @@ void times_table(void)
 			if (prod <= 9)
 				_putchar(' ');
 			else
-				char tens = (prod / 10) + 48;
-				char ones = (prod % 10) + 48;
-				_putchar(tens);
-				_putchar(ones);
+				_putchar((prod / 10) + 48);
+				_putchar((prod % 10) + 48);
 		}
 		_putchar('\n');
 	}
