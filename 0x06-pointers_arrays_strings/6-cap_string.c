@@ -40,4 +40,5 @@ char *cap_string(char *s)
 		}
 		i++;
 	}
-	retu
+	return (s);
+}
