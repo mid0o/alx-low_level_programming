@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * _strspn - a function that gets the
  *           length of a prexif substring
