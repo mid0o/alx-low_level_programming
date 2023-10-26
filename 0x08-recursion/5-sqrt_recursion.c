@@ -11,22 +11,20 @@
 */
 int _sqrt_recursion_helper(int n, int min, int max)
 {
-    int guess, guess_squared;
-    
-    while (min <= max) {
-        guess = (min + max) / 2;
-        guess_squared = guess * guess;
-
-        if (guess_squared == n) {
-            return guess;
-        } else if (guess_squared < n) {
-            min = guess + 1;
-        } else {
-            max = guess - 1;
-        }
+    if (min > max) {
+        return (-1);
     }
     
-    return (-1);  // No perfect square root
+    int guess = (min + max) / 2;
+    int guess_squared = guess * guess;
+    
+    if (guess_squared == n) {
+        return guess;
+    } else if (guess_squared < n) {
+        return _sqrt_recursion_helper(n, guess + 1, max);
+    } else {
+        return _sqrt_recursion_helper(n, min, guess - 1);
+    }
 }
 
 /**
@@ -45,6 +43,6 @@ int _sqrt_recursion(int n)
     if (n == 0 || n == 1) {
         return (n);
     }
-
+    
     return _sqrt_recursion_helper(n, 0, n);
 }
