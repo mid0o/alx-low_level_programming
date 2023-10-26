@@ -11,11 +11,13 @@
 */
 int _sqrt_recursion_helper(int n, int min, int max)
 {
+    int guess;
+    
     if (min > max) {
         return (-1);
     }
 
-    int guess = (min + max) / 2;
+    guess = (min + max) / 2;
     int guess_squared = guess * guess;
 
     if (guess_squared == n) {
