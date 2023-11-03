@@ -1,44 +1,61 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
+unsigned int _length(char *ch);
 /**
- * string_nconcat - Concatenates two strings using  n bytes from s2.
- * @s1: The first string.
- * @s2: The second string.
- * @n: The maximum number of bytes of s2 to concatenate to s1.
- *
- * Return: If the function fails - NULL.
- *         Otherwise - a pointer to the concatenated space in memory.
+ * *string_nconcat - concatinates two strings
+ * @s1: string
+ * @s2: string
+ * @n: integer
+ * Return: pointer to s1
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *concat;
-	unsigned int len1, len2, concat_len, i, j;
-	len1 = strlen(s1);
-	len2 = strlen(s2);
+	char *s;
+	unsigned int i, j;
+
 
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
 
-	if (n >= len2)
-		n = len2;
+	if (n >  _length(s2))
+		n = _length(s2);
 
-	concat_len = len1 + n + 1;
-	concat = malloc(concat_len * sizeof(char));
+	s = malloc(sizeof(char) * (_length(s1) + n + 1));
 
-	if (concat == NULL)
+	if (!s)
+	{
 		return (NULL);
+	}
+	i = 0;
+	while (i < _length(s1))
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	for (j = 0; n > 0; i++, j++)
+	{
+		s[i] = s2[j];
+		n--;
+	}
+	s[i] = '\0';
+	return (s);
+}
+/**
+ * _length - returns the length of a string
+ * @ch: string
+ * Return: integer
+ */
+unsigned int _length(char *ch)
+{
+	int i;
 
-	for (i = 0; i < len1; i++)
-		concat[i] = s1[i];
+	i = 0;
+	while (ch[i] != '\0')
+		i++;
 
-	for (j = 0; j < n; j++, i++)
-		concat[i] = s2[j];
-
-	concat[i] = '\0';
-
-	return (concat);
+	return (i);
 }
