@@ -1,14 +1,15 @@
 #include "function_pointers.h"
-#include <stdlib.h>
+
 /**
- * print_name - print a name
- * Description: this function takes a pointer to a string and a pointer
- * to a function, and then call the function @f paasing the name a sparameter
- *@name: a pointer to a string
- *@f: a pointer to a function
+ * print_name - a function that prints a name.
+ * @name: the name given
+ * @f: function of name
+ *
+ * Rteurn: void
  */
 void print_name(char *name, void (*f)(char *))
 {
-if (name && f)
-  f(name);
-{
+	if (name != NULL && f != NULL)
+
+		f(name);
+}
